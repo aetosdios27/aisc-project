@@ -1,0 +1,32 @@
+{
+  "source": "https://www.ffothello.org/wthor/base/WTH_2021.wtb",
+  "raw_sha256": "f7c2672aaae2badeb1c21bccfc7e4936a11277c68fcb9775f6c7375872f22208",
+  "seed": 730,
+  "limit": null,
+  "target": "recorded game outcome from side-to-move perspective: loss=-1, draw=0, win=1",
+  "sampling": "every fourth placement from placement 16",
+  "features": 64,
+  "grouping": "symmetric position after 12 placements; whole games grouped",
+  "leakage_policy": "within-split symmetric duplicates keep first; later splits discard distance <=2 from any earlier split under all eight board symmetries",
+  "counts": {
+    "train": 5044,
+    "validation": 1816,
+    "test": 1107
+  },
+  "group_counts": {
+    "train": 303,
+    "validation": 61,
+    "test": 69
+  },
+  "removed": {
+    "train": 53,
+    "validation": 89,
+    "test": 30
+  },
+  "processed_sha256": {
+    "train": "c35d4763593c4613834d16143ba1f7dc308a8496ad015d35ad876013b4f59b3a",
+    "validation": "5be839dd270983d3f3ceb793c62a91592f3c7499415c33ab4b62c68edb845ed5",
+    "test": "e45c2d2845579d99909348ec1eb44f3a0a1414463f791069152828e05c255d02"
+  },
+  "rejected_games": []
+}

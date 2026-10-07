@@ -1,0 +1,219 @@
+{
+  "status": "pilot",
+  "tournament_sha256": "60c3aee03572218d784da12f502910648e368f161040d9d15714faa2626782c9",
+  "analysis_sha256": "688f50374ca63e1d290701200a7e91c9f2dfe0525e07871a47dc542cf56fce3d",
+  "replayed_games": 324,
+  "pairings": [
+    {
+      "first": "ga-ab",
+      "second": "manual-ab",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.4,
+      "first_score_interval95": [
+        0.15,
+        0.6
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "ga-ab",
+      "second": "manual-greedy",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.55,
+      "first_score_interval95": [
+        0.4,
+        0.7
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "ga-ab",
+      "second": "manual-minimax",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.4,
+      "first_score_interval95": [
+        0.15,
+        0.6
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "ga-ab",
+      "second": "neural-ab",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.925,
+      "first_score_interval95": [
+        0.825,
+        1.0
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "ga-ab",
+      "second": "random",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.85,
+      "first_score_interval95": [
+        0.7,
+        0.95
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "manual-ab",
+      "second": "manual-greedy",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.7,
+      "first_score_interval95": [
+        0.5,
+        0.9
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "manual-ab",
+      "second": "manual-minimax",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.5,
+      "first_score_interval95": [
+        0.5,
+        0.5
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "manual-ab",
+      "second": "neural-ab",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.85,
+      "first_score_interval95": [
+        0.6,
+        1.0
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "manual-ab",
+      "second": "random",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.975,
+      "first_score_interval95": [
+        0.925,
+        1.0
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "manual-greedy",
+      "second": "manual-minimax",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.3,
+      "first_score_interval95": [
+        0.1,
+        0.5
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "manual-greedy",
+      "second": "neural-ab",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.8,
+      "first_score_interval95": [
+        0.65,
+        0.95
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "manual-greedy",
+      "second": "random",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.95,
+      "first_score_interval95": [
+        0.85,
+        1.0
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "manual-minimax",
+      "second": "neural-ab",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.85,
+      "first_score_interval95": [
+        0.6,
+        1.0
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "manual-minimax",
+      "second": "random",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.975,
+      "first_score_interval95": [
+        0.925,
+        1.0
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    },
+    {
+      "first": "neural-ab",
+      "second": "random",
+      "games": 20,
+      "opening_pairs": 10,
+      "unique_openings": 10,
+      "first_score_rate": 0.8,
+      "first_score_interval95": [
+        0.6,
+        0.95
+      ],
+      "bootstrap_samples": 2000,
+      "bootstrap_seed": 1911
+    }
+  ],
+  "interpretation": "Percentile intervals resample opening pairs. Small deterministic panels are preliminary."
+}

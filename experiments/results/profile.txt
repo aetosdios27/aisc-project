@@ -1,0 +1,34 @@
+Six seeded positions, depth 3, manual Alpha-Beta, positional ordering.
+Profiler timings include instrumentation overhead.
+
+         5873076 function calls (5869851 primitive calls) in 1.386 seconds
+
+   Ordered by: cumulative time
+   List reduced from 46 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        6    0.000    0.000    1.499    0.250 search.py:37(search)
+  3297/72    0.009    0.000    1.492    0.021 search.py:47(visit)
+     2511    0.002    0.000    0.873    0.000 evaluation.py:68(__call__)
+     2511    0.007    0.000    0.866    0.000 evaluation.py:62(explain)
+     2511    0.138    0.000    0.853    0.000 evaluation.py:27(features)
+    14937    0.020    0.000    0.818    0.000 board.py:65(legal_moves)
+   180252    0.089    0.000    0.798    0.000 board.py:66(<genexpr>)
+   504505    0.606    0.000    0.717    0.000 board.py:47(captures)
+     6600    0.002    0.000    0.373    0.000 board.py:68(is_terminal)
+    22605    0.061    0.000    0.322    0.000 {built-in method builtins.sum}
+     3297    0.005    0.000    0.242    0.000 board.py:72(play)
+     3309    0.002    0.000    0.190    0.000 search.py:21(ordered_moves)
+     5022    0.002    0.000    0.181    0.000 evaluation.py:38(potential)
+   248261    0.079    0.000    0.149    0.000 {built-in method builtins.any}
+     5022    0.002    0.000    0.107    0.000 evaluation.py:36(frontier)
+  1215324    0.105    0.000    0.105    0.000 evaluation.py:34(<genexpr>)
+  1051712    0.073    0.000    0.073    0.000 {method 'append' of 'list' objects}
+   843048    0.044    0.000    0.044    0.000 evaluation.py:39(<genexpr>)
+   665209    0.040    0.000    0.040    0.000 {built-in method builtins.divmod}
+     3297    0.003    0.000    0.035    0.000 board.py:26(__post_init__)
+   214305    0.020    0.000    0.020    0.000 board.py:29(<genexpr>)
+   316447    0.019    0.000    0.019    0.000 evaluation.py:37(<genexpr>)
+   217902    0.019    0.000    0.019    0.000 {method 'extend' of 'list' objects}
+     3309    0.006    0.000    0.010    0.000 {built-in method builtins.sorted}
+   163215    0.009    0.000    0.009    0.000 evaluation.py:46(<genexpr>)

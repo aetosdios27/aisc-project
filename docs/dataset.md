@@ -1,0 +1,15 @@
+# Public-data provenance and target
+
+Source: the [French Othello Federation WTHOR archive](https://www.ffothello.org/informatique/la-base-wthor/), using [the 2021 game file](https://www.ffothello.org/wthor/base/WTH_2021.wtb). The official [binary format specification](https://www.ffothello.org/wthor/Format_WThor.pdf) defines the layout. This is a credible federation archive available through an automatic download, without manual Kaggle authentication.
+
+The parser reads a 16-byte header followed by 68-byte game records, little-endian record count, recorded Black score, and up to 60 placement bytes. Coordinates encode column + 10×row, using one-based row/column. Zero pads unused moves; passes are reconstructed from legality. It validates declared sizes, standard board type and all move encodings before replay.
+
+The cache lives in `data/raw/`. Generated JSONL splits live in `data/processed/`. Neither cache is committed; `experiments/results/dataset_manifest.json` records the public source, raw SHA256, preprocessing seed, sample counts, removal counts, grouping policy and processed hashes. Use its raw SHA256 with `--sha256` to reproduce the exact input or fail if the upstream file changes.
+
+Each JSONL row contains 64 numeric inputs, a target, source-game ID and placement number. Inputs are relative to the current player: own disc +1, opponent −1, empty 0. This contains the required side-to-move information implicitly. Black's recorded result is the sign of score−32; multiply by board.turn for the sample's target. Targets therefore mean eventual **recorded** outcomes, not optimal-play outcomes. Recorded scoring may award remaining empty squares to the winner; only outcome sign is used.
+
+Sampling starts after placement 16, every four placements. Whole games are grouped by their symmetric position after placement 12. Hashing the group with seed 730 assigns approximately 70/15/15 proportions. First occurrences of within-split symmetric duplicates are kept deterministically. Later splits discard positions within Hamming distance two of earlier splits under any of eight symmetries. The near-index uses band matches to retrieve candidates then verifies actual distance. It filters training overlap before test evaluation; validation is also included as an earlier split when filtering test.
+
+This policy removes exact and specified near-duplicate leakage; it cannot remove every strategic similarity between different games. Human players, tournament styles, long shared histories and outcome noise can remain. Discarding duplicate outcome labels can introduce bias, so this decision is explicit and should be revisited for larger studies. A future improvement is to aggregate repeated outcomes within the training split while preserving group boundaries.
+
+The pilot used 680 recorded games, with no rejected reconstructions. Counts and cryptographic fingerprints are authoritative in the manifest. Public availability is documented by the source; no broader dataset license is inferred. Raw records are downloaded from the source rather than redistributed in this repository.

@@ -1,0 +1,3586 @@
+{
+  "config": {
+    "population": 6,
+    "generations": 4,
+    "pairs": 2,
+    "depth": 1,
+    "seed": 440
+  },
+  "provenance": {
+    "python": "3.14.7",
+    "platform": "Linux-7.2.8-200.fc44.x86_64-x86_64-with-glibc2.43",
+    "source_sha256": {
+      "engine/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "engine/agents.py": "4391deb9fd6438d64f158ae2d8a5350b9c07f4487e346e7a236510afac8c5eed",
+      "engine/board.py": "c97e383ee08e952dba006b8a0ecc27b5120755c52104ed47d541fd7ef93fe7d6",
+      "engine/evaluation.py": "eb66e54ef08a7aa8402b4d787c6307b03d96d710f7007f3cd7f0e27cc1f99066",
+      "engine/search.py": "3a73a3874b92eafe5173549be9aa3bd1a70aa29daad7d44d426d4b4964a41371",
+      "evolution/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evolution/ga.py": "3333e10875fafcbfe0c0892526046cb07e6eb1514e4609219e04b3ca71eaa5ed",
+      "experiments/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "experiments/tournament.py": "4a24cc7bfc4f9ac55689a9660b4bbc61bca812515ff22f76c7264a909f9d30e3",
+      "neural/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "features": [
+    "piece",
+    "mobility",
+    "corner",
+    "frontier",
+    "position",
+    "potential",
+    "danger"
+  ],
+  "weights": [
+    0.09763714957174612,
+    0.25272357006847496,
+    0.23075732760875706,
+    0.07069806161088643,
+    0.12297874679000893,
+    0.19168786101692256,
+    -0.03351728333320388
+  ],
+  "validation_score": 0.5,
+  "history": [
+    {
+      "generation": 0,
+      "best_fitness": 0.6666666666666666,
+      "average_fitness": 0.4861111111111111,
+      "diversity": 0.1000995559187599,
+      "weights": [
+        0.09763714957174612,
+        0.25272357006847496,
+        0.23075732760875706,
+        0.07069806161088643,
+        0.12297874679000893,
+        0.19168786101692256,
+        -0.03351728333320388
+      ],
+      "validation_score": 0.5,
+      "population": [
+        [
+          0.05,
+          0.25,
+          0.3,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.14207575135586573,
+          0.24103947478544605,
+          0.38616283942549484,
+          0.13976031399611336,
+          0.006195270612482287,
+          -0.009671521270048906,
+          0.07509482855454883
+        ],
+        [
+          0.12957179163698881,
+          0.40887260918526036,
+          0.03733665995191097,
+          -0.055928231432534226,
+          0.1488865058771302,
+          -0.18738891625312587,
+          0.03201528566304966
+        ],
+        [
+          0.09763714957174612,
+          0.25272357006847496,
+          0.23075732760875706,
+          0.07069806161088643,
+          0.12297874679000893,
+          0.19168786101692256,
+          -0.03351728333320388
+        ],
+        [
+          0.06086200773720437,
+          0.17740665964025626,
+          0.11094287245855311,
+          0.050124976603335446,
+          -0.17852399163890598,
+          0.30379618254794993,
+          -0.11834330937379492
+        ],
+        [
+          0.025735498501683482,
+          0.20695139706789487,
+          0.1586948576988701,
+          0.23203418501474068,
+          0.04629646141013974,
+          -0.15166027220598327,
+          0.17862732810068796
+        ]
+      ],
+      "fitness": [
+        0.5833333333333334,
+        0.3333333333333333,
+        0.4166666666666667,
+        0.6666666666666666,
+        0.25,
+        0.6666666666666666
+      ],
+      "opponents": [
+        [
+          0.05,
+          0.25,
+          0.3,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.05,
+          0.25,
+          0.3,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.14207575135586573,
+          0.24103947478544605,
+          0.38616283942549484,
+          0.13976031399611336,
+          0.006195270612482287,
+          -0.009671521270048906,
+          0.07509482855454883
+        ]
+      ],
+      "tournament_results": [
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 50,
+              "white": 14,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 50,
+              "white": 14,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 50,
+              "white": 14,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 50,
+              "white": 14,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 53,
+              "white": 11,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 44,
+              "white": 20,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 42,
+              "white": 22,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 7,
+              "white": 57,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 44,
+              "white": 20,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 53,
+              "white": 11,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 7,
+              "white": 57,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 42,
+              "white": 22,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 44,
+              "white": 20,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 53,
+              "white": 11,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 7,
+              "white": 57,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 42,
+              "white": 22,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 41,
+              "white": 23,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 41,
+              "white": 23,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 24,
+              "white": 40,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 24,
+              "white": 40,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 33,
+              "white": 31,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 48,
+              "white": 16,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 43,
+              "white": 21,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 33,
+              "white": 31,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 48,
+              "white": 16,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 43,
+              "white": 21,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 36,
+              "white": 28,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 45,
+              "white": 19,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 29,
+              "white": 35,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 31,
+              "white": 33,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 31,
+              "white": 33,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 43,
+              "white": 21,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 19,
+              "white": 45,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 34,
+              "white": 30,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 35,
+              "white": 29,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 42,
+              "white": 22,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 5,
+              "white": 59,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 47,
+              "white": 17,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 35,
+              "white": 29,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 42,
+              "white": 22,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 5,
+              "white": 59,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 47,
+              "white": 17,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 52,
+              "white": 12,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 55,
+              "white": 9,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 10,
+              "white": 54,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 43,
+              "white": 21,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 37,
+              "white": 27,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 54,
+              "white": 10,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 39,
+              "white": 25,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 18,
+              "white": 46,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 37,
+              "white": 27,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 54,
+              "white": 10,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 39,
+              "white": 25,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 18,
+              "white": 46,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 38,
+              "white": 26,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 40,
+              "white": 24,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 14,
+              "white": 50,
+              "empty": 0
+            }
+          }
+        ]
+      ],
+      "validation_results": [
+        {
+          "seed": 1440,
+          "color": 1,
+          "winner": -1,
+          "counts": {
+            "black": 11,
+            "white": 53,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1440,
+          "color": -1,
+          "winner": -1,
+          "counts": {
+            "black": 22,
+            "white": 42,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1441,
+          "color": 1,
+          "winner": -1,
+          "counts": {
+            "black": 5,
+            "white": 59,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1441,
+          "color": -1,
+          "winner": -1,
+          "counts": {
+            "black": 17,
+            "white": 47,
+            "empty": 0
+          }
+        }
+      ]
+    },
+    {
+      "generation": 1,
+      "best_fitness": 0.625,
+      "average_fitness": 0.5208333333333334,
+      "diversity": 0.06485821818440461,
+      "weights": [
+        0.08194998031984083,
+        0.26813356167294355,
+        0.2654817952772628,
+        0.1933662245115812,
+        0.10876061195929297,
+        0.03561615844528639,
+        0.04669166781379223
+      ],
+      "validation_score": 0.5,
+      "population": [
+        [
+          0.09763714957174612,
+          0.25272357006847496,
+          0.23075732760875706,
+          0.07069806161088643,
+          0.12297874679000893,
+          0.19168786101692256,
+          -0.03351728333320388
+        ],
+        [
+          0.10188207750766072,
+          0.30548955124432914,
+          0.08792413864730288,
+          -0.011360236099576973,
+          0.4129101027718609,
+          -0.051123880852382904,
+          -0.02931001287688641
+        ],
+        [
+          0.06884372677405093,
+          0.2847341498509232,
+          0.1870770751124713,
+          0.10079397918464228,
+          0.08808313354935607,
+          -0.16099057516821172,
+          0.10947736036034444
+        ],
+        [
+          0.05913902133035245,
+          0.29569510665176224,
+          0.17205370137506576,
+          0.1182780426607049,
+          0.1182780426607049,
+          0.1182780426607049,
+          0.1182780426607049
+        ],
+        [
+          0.08194998031984083,
+          0.26813356167294355,
+          0.2654817952772628,
+          0.1933662245115812,
+          0.10876061195929297,
+          0.03561615844528639,
+          0.04669166781379223
+        ],
+        [
+          0.08241757571890669,
+          0.26238634973041586,
+          0.268762793015757,
+          0.08563239627013254,
+          0.11887127384625824,
+          0.16255497516592696,
+          0.019374636252602676
+        ]
+      ],
+      "fitness": [
+        0.5833333333333334,
+        0.4166666666666667,
+        0.4166666666666667,
+        0.5,
+        0.625,
+        0.5833333333333334
+      ],
+      "opponents": [
+        [
+          0.05,
+          0.25,
+          0.3,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.09763714957174612,
+          0.25272357006847496,
+          0.23075732760875706,
+          0.07069806161088643,
+          0.12297874679000893,
+          0.19168786101692256,
+          -0.03351728333320388
+        ],
+        [
+          0.06884372677405093,
+          0.2847341498509232,
+          0.1870770751124713,
+          0.10079397918464228,
+          0.08808313354935607,
+          -0.16099057516821172,
+          0.10947736036034444
+        ]
+      ],
+      "tournament_results": [
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 31,
+              "white": 33,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 44,
+              "white": 20,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 44,
+              "white": 20,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 44,
+              "white": 20,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 24,
+              "white": 40,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 31,
+              "white": 33,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 20,
+              "white": 44,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 35,
+              "white": 29,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 52,
+              "white": 12,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 24,
+              "white": 40,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 43,
+              "white": 21,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 42,
+              "white": 22,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 51,
+              "white": 13,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 37,
+              "white": 27,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 45,
+              "white": 19,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 25,
+              "white": 39,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 20,
+              "white": 44,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 53,
+              "white": 11,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 20,
+              "white": 44,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 24,
+              "white": 40,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 44,
+              "white": 20,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 20,
+              "white": 44,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 31,
+              "white": 33,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 50,
+              "white": 14,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 50,
+              "white": 14,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 51,
+              "white": 13,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 50,
+              "white": 14,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 25,
+              "white": 39,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 31,
+              "white": 33,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 36,
+              "white": 28,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 20,
+              "white": 44,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 25,
+              "white": 39,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 48,
+              "white": 16,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 59,
+              "white": 5,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 40,
+              "white": 24,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 57,
+              "white": 7,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 10,
+              "white": 54,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 51,
+              "white": 13,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 51,
+              "white": 12,
+              "empty": 1
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 28,
+              "white": 36,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 31,
+              "white": 33,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 39,
+              "white": 25,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 44,
+              "white": 20,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 11,
+              "white": 53,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 44,
+              "white": 20,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 39,
+              "white": 25,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 20,
+              "white": 44,
+              "empty": 0
+            }
+          }
+        ]
+      ],
+      "validation_results": [
+        {
+          "seed": 1440,
+          "color": 1,
+          "winner": -1,
+          "counts": {
+            "black": 13,
+            "white": 51,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1440,
+          "color": -1,
+          "winner": -1,
+          "counts": {
+            "black": 22,
+            "white": 42,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1441,
+          "color": 1,
+          "winner": 1,
+          "counts": {
+            "black": 43,
+            "white": 21,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1441,
+          "color": -1,
+          "winner": 1,
+          "counts": {
+            "black": 43,
+            "white": 21,
+            "empty": 0
+          }
+        }
+      ]
+    },
+    {
+      "generation": 2,
+      "best_fitness": 0.625,
+      "average_fitness": 0.3611111111111111,
+      "diversity": 0.05525919935417702,
+      "weights": [
+        0.08194998031984083,
+        0.26813356167294355,
+        0.2654817952772628,
+        0.1933662245115812,
+        0.10876061195929297,
+        0.03561615844528639,
+        0.04669166781379223
+      ],
+      "validation_score": 0.5,
+      "population": [
+        [
+          0.08194998031984083,
+          0.26813356167294355,
+          0.2654817952772628,
+          0.1933662245115812,
+          0.10876061195929297,
+          0.03561615844528639,
+          0.04669166781379223
+        ],
+        [
+          0.0949160735501865,
+          0.3105575469535636,
+          0.149266617620712,
+          0.22396055150021255,
+          0.12596867264399117,
+          0.04125133284198531,
+          0.05407920488934885
+        ],
+        [
+          -0.009646861028898694,
+          0.39051010662335667,
+          0.2974149748795802,
+          0.14558491148948952,
+          0.0010257129915109877,
+          0.12150383658985199,
+          0.03431359639731194
+        ],
+        [
+          -0.08725660866382672,
+          0.2007820720865252,
+          0.19879639320212045,
+          0.1447952691440385,
+          0.20031713875200916,
+          0.16228706890114727,
+          0.0057654492503326545
+        ],
+        [
+          0.1514491499715604,
+          0.2875062368554302,
+          0.17713785662868128,
+          0.12275035491269769,
+          0.11513810148583829,
+          0.03646475172351245,
+          0.10955354842227973
+        ],
+        [
+          0.06303045520160458,
+          0.20623043936206248,
+          0.3206296149755806,
+          0.1487243938804195,
+          0.1326715047143057,
+          0.027393571915176697,
+          0.10132001995085047
+        ]
+      ],
+      "fitness": [
+        0.625,
+        0.4583333333333333,
+        0.16666666666666666,
+        0.4166666666666667,
+        0.25,
+        0.25
+      ],
+      "opponents": [
+        [
+          0.05,
+          0.25,
+          0.3,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.08194998031984083,
+          0.26813356167294355,
+          0.2654817952772628,
+          0.1933662245115812,
+          0.10876061195929297,
+          0.03561615844528639,
+          0.04669166781379223
+        ],
+        [
+          0.08194998031984083,
+          0.26813356167294355,
+          0.2654817952772628,
+          0.1933662245115812,
+          0.10876061195929297,
+          0.03561615844528639,
+          0.04669166781379223
+        ]
+      ],
+      "tournament_results": [
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 48,
+              "white": 16,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 59,
+              "white": 5,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 40,
+              "white": 24,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 59,
+              "white": 5,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 16,
+              "white": 48,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 17,
+              "white": 47,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 40,
+              "white": 24,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 0,
+              "empty": 15
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 28,
+              "white": 36,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 25,
+              "white": 39,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 0,
+              "empty": 15
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 24,
+              "white": 40,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 25,
+              "white": 39,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 0,
+              "empty": 15
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 24,
+              "white": 40,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 25,
+              "white": 39,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 43,
+              "white": 21,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 19,
+              "white": 45,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 15,
+              "white": 49,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 56,
+              "white": 0,
+              "empty": 8
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 47,
+              "white": 17,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 19,
+              "white": 45,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 15,
+              "white": 49,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 56,
+              "white": 0,
+              "empty": 8
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 47,
+              "white": 17,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 19,
+              "white": 45,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 15,
+              "white": 49,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 44,
+              "white": 20,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 23,
+              "white": 41,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 7,
+              "white": 57,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 15,
+              "white": 49,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 31,
+              "white": 33,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 42,
+              "white": 22,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 2,
+              "white": 62,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 35,
+              "white": 29,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 31,
+              "white": 33,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 42,
+              "white": 22,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 2,
+              "white": 62,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 35,
+              "white": 29,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 25,
+              "white": 39,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 29,
+              "white": 35,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 47,
+              "white": 17,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 42,
+              "white": 22,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 29,
+              "white": 35,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 59,
+              "white": 5,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 47,
+              "white": 17,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 42,
+              "white": 22,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 29,
+              "white": 35,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 59,
+              "white": 5,
+              "empty": 0
+            }
+          }
+        ]
+      ],
+      "validation_results": [
+        {
+          "seed": 1440,
+          "color": 1,
+          "winner": -1,
+          "counts": {
+            "black": 13,
+            "white": 51,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1440,
+          "color": -1,
+          "winner": -1,
+          "counts": {
+            "black": 22,
+            "white": 42,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1441,
+          "color": 1,
+          "winner": 1,
+          "counts": {
+            "black": 43,
+            "white": 21,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1441,
+          "color": -1,
+          "winner": 1,
+          "counts": {
+            "black": 43,
+            "white": 21,
+            "empty": 0
+          }
+        }
+      ]
+    },
+    {
+      "generation": 3,
+      "best_fitness": 0.8333333333333334,
+      "average_fitness": 0.5763888888888888,
+      "diversity": 0.042144579337435456,
+      "weights": [
+        0.15080293896489602,
+        0.13974262902682477,
+        0.19146036423488277,
+        0.13302800218096691,
+        0.12801109544305259,
+        0.04549568869965288,
+        0.2114592814497241
+      ],
+      "validation_score": 0.5,
+      "population": [
+        [
+          0.08194998031984083,
+          0.26813356167294355,
+          0.2654817952772628,
+          0.1933662245115812,
+          0.10876061195929297,
+          0.03561615844528639,
+          0.04669166781379223
+        ],
+        [
+          0.0690816180534688,
+          0.2260293440280656,
+          0.22379397664178335,
+          0.16300249998859664,
+          0.16337209296622984,
+          0.11536065457201769,
+          0.03935981374983816
+        ],
+        [
+          0.11432346492946573,
+          0.20581838237902408,
+          0.17978700852683882,
+          0.2697535338045812,
+          0.15172535683971491,
+          0.0496859501985284,
+          0.028906303321846863
+        ],
+        [
+          0.15080293896489602,
+          0.13974262902682477,
+          0.19146036423488277,
+          0.13302800218096691,
+          0.12801109544305259,
+          0.04549568869965288,
+          0.2114592814497241
+        ],
+        [
+          -0.01288080823605521,
+          0.2552917048373115,
+          0.22800101764692912,
+          0.1841052377237606,
+          0.17626308942062147,
+          0.11686186802661468,
+          0.02659627410870735
+        ],
+        [
+          0.02576705685704543,
+          0.274838275901201,
+          0.17217802664317533,
+          0.19820137184881978,
+          0.15805732174233175,
+          0.08964342993784527,
+          0.08131451706958141
+        ]
+      ],
+      "fitness": [
+        0.625,
+        0.5,
+        0.6666666666666666,
+        0.8333333333333334,
+        0.3333333333333333,
+        0.5
+      ],
+      "opponents": [
+        [
+          0.05,
+          0.25,
+          0.3,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.08194998031984083,
+          0.26813356167294355,
+          0.2654817952772628,
+          0.1933662245115812,
+          0.10876061195929297,
+          0.03561615844528639,
+          0.04669166781379223
+        ],
+        [
+          -0.01288080823605521,
+          0.2552917048373115,
+          0.22800101764692912,
+          0.1841052377237606,
+          0.17626308942062147,
+          0.11686186802661468,
+          0.02659627410870735
+        ]
+      ],
+      "tournament_results": [
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 48,
+              "white": 16,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 59,
+              "white": 5,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 40,
+              "white": 24,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 55,
+              "white": 9,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 13,
+              "white": 51,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 40,
+              "white": 24,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 52,
+              "white": 12,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 9,
+              "white": 55,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 56,
+              "white": 8,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 15,
+              "white": 49,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 59,
+              "white": 5,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 33,
+              "white": 31,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 53,
+              "white": 11,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 41,
+              "white": 23,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 24,
+              "white": 40,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 59,
+              "white": 5,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 28,
+              "white": 36,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 43,
+              "white": 21,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 2,
+              "white": 60,
+              "empty": 2
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 39,
+              "white": 25,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 41,
+              "white": 23,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 43,
+              "white": 21,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 25,
+              "white": 39,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 45,
+              "white": 19,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 55,
+              "white": 9,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 20,
+              "white": 44,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 40,
+              "white": 24,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 45,
+              "white": 19,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 19,
+              "white": 45,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 50,
+              "white": 14,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 15,
+              "white": 49,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 16,
+              "white": 48,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 48,
+              "white": 16,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 49,
+              "white": 15,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 46,
+              "white": 18,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": 0,
+            "counts": {
+              "black": 32,
+              "white": 32,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 30,
+              "white": 34,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 53,
+              "white": 11,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 55,
+              "white": 9,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 40,
+              "white": 24,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 13,
+              "white": 51,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 55,
+              "white": 9,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 40,
+              "white": 24,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 40,
+              "white": 24,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 21,
+              "white": 43,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 21,
+              "white": 43,
+              "empty": 0
+            }
+          }
+        ],
+        [
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 37,
+              "white": 27,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 25,
+              "white": 39,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 26,
+              "white": 38,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 15,
+              "white": 49,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": 1,
+            "counts": {
+              "black": 42,
+              "white": 22,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 54,
+              "white": 10,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 19,
+              "white": 45,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": 1,
+            "counts": {
+              "black": 59,
+              "white": 5,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 22,
+              "white": 42,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 440,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 28,
+              "white": 36,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": 1,
+            "winner": -1,
+            "counts": {
+              "black": 25,
+              "white": 39,
+              "empty": 0
+            }
+          },
+          {
+            "seed": 441,
+            "color": -1,
+            "winner": -1,
+            "counts": {
+              "black": 11,
+              "white": 53,
+              "empty": 0
+            }
+          }
+        ]
+      ],
+      "validation_results": [
+        {
+          "seed": 1440,
+          "color": 1,
+          "winner": -1,
+          "counts": {
+            "black": 27,
+            "white": 37,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1440,
+          "color": -1,
+          "winner": -1,
+          "counts": {
+            "black": 11,
+            "white": 53,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1441,
+          "color": 1,
+          "winner": -1,
+          "counts": {
+            "black": 26,
+            "white": 38,
+            "empty": 0
+          }
+        },
+        {
+          "seed": 1441,
+          "color": -1,
+          "winner": -1,
+          "counts": {
+            "black": 26,
+            "white": 38,
+            "empty": 0
+          }
+        }
+      ]
+    }
+  ]
+}
