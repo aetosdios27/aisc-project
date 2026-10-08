@@ -8,7 +8,8 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from engine.board import Board
 from engine.agents import RandomAgent, SearchAgent, GreedyAgent
-from engine.evaluation import Heuristic, features
+from engine.evaluation import Heuristic
+from experiments.tournament import digest
 
 ROOT = Path(__file__).resolve().parents[1]
 ENGINES = ('random', 'manual-greedy', 'manual-minimax', 'manual-ab', 'ga-ab', 'neural-ab')
@@ -52,16 +53,20 @@ def describe(board):
 
 
 def operation(payload):
+    if not isinstance(payload, dict):
+        raise ValueError('Expected a JSON object')
     action = payload.get('action', 'state')
     board = Board.deserialize(payload['board']) if 'board' in payload else Board.initial()
     if action == 'move':
-        board = board.play(payload.get('move'))
+        if 'move' not in payload:
+            raise ValueError('Move is required; use null for an explicit pass')
+        board = board.play(payload['move'])
         return describe(board)
     if action in ('analyze', 'step'):
-        if board.is_terminal():
-            return describe(board)
         selected = agent(payload.get('engine', 'manual-ab'), payload.get('depth', 2),
                          payload.get('seed', 0), payload.get('seconds'))
+        if board.is_terminal():
+            return describe(board)
         result = selected.choose(board)
         before = board.serialize()
         if action == 'step':
@@ -72,6 +77,42 @@ def operation(payload):
     if action != 'state':
         raise ValueError('Unknown action')
     return describe(board)
+
+
+def saved_results(root=ROOT):
+    """Read a self-contained snapshot; expose hashes so stale evidence is visible."""
+    result = {}
+    for name in ('tournament', 'benchmark', 'ga', 'neural', 'depth', 'analysis'):
+        target = root / 'experiments/results' / f'{name}.json'
+        if not target.exists():
+            continue
+        data = json.loads(target.read_text())
+        data['artifact_sha256'] = digest(target)
+        games = data.pop('games', None)
+        if name == 'tournament':
+            pairs = {}
+            for game in games:
+                key = ' / '.join(sorted((game['black'], game['white'])))
+                row = pairs.setdefault(key, {'games': 0, 'engines': {n: 0 for n in (game['black'], game['white'])}})
+                row['games'] += 1
+                for engine in row['engines']:
+                    row['engines'][engine] += 0.5 if game['winner'] == 0 else int(game['winner'] == (1 if game['black'] == engine else -1))
+            data['pairs'] = pairs
+        if name == 'ga':
+            for row in data['history']:
+                for field in ('population', 'tournament_results', 'validation_results'):
+                    row.pop(field, None)
+        if name == 'depth':
+            for study in data['studies']:
+                study.pop('games', None)
+        result[name] = data
+    manifest = root / 'experiments/plots/manifest.json'
+    if manifest.exists():
+        plots = json.loads(manifest.read_text())
+        plots['sources_match'] = all(name in result and result[name]['artifact_sha256'] == expected
+                                     for name, expected in plots['sources'].items())
+        result['plots'] = plots
+    return result
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -91,32 +132,10 @@ class Handler(SimpleHTTPRequestHandler):
         if path == '/api/state':
             self.json_response(describe(Board.initial()))
         elif path == '/api/results':
-            result = {}
-            for name in ('tournament', 'benchmark', 'ga', 'neural', 'depth'):
-                target = ROOT / 'experiments/results' / f'{name}.json'
-                if target.exists():
-                    data = json.loads(target.read_text())
-                    # Keep the browser payload small; full transcripts remain on disk.
-                    data.pop('games', None)
-                    if name == 'tournament':
-                        games = json.loads(target.read_text())['games']
-                        pairs = {}
-                        for game in games:
-                            key = ' / '.join(sorted((game['black'], game['white'])))
-                            row = pairs.setdefault(key, {'games': 0, 'engines': {n: 0 for n in (game['black'], game['white'])}})
-                            row['games'] += 1
-                            for engine in row['engines']:
-                                row['engines'][engine] += 0.5 if game['winner'] == 0 else int(game['winner'] == (1 if game['black'] == engine else -1))
-                        data['pairs'] = pairs
-                    if name == 'ga':
-                        for row in data['history']:
-                            for field in ('population', 'tournament_results', 'validation_results'):
-                                row.pop(field, None)
-                    if name == 'depth':
-                        for study in data['studies']:
-                            study.pop('games', None)
-                    result[name] = data
-            self.json_response(result)
+            try:
+                self.json_response(saved_results())
+            except (ValueError, KeyError, TypeError, OSError) as exc:
+                self.json_response({'error': f'Saved experiment artifacts are incomplete or invalid: {exc}'}, 503)
         elif path.startswith('/plots/'):
             filename = path.removeprefix('/plots/')
             if '/' in filename or not filename.endswith('.png'):

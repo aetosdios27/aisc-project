@@ -1,21 +1,67 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>othello-ai · Engine laboratory</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>othello-ai · Othello engine laboratory</title>
+  <link rel="stylesheet" href="/style.css?v=3">
+  <script src="/app.js?v=3" defer></script>
+</head>
 <body>
-<header><a class="identity" href="/"><span class="mark">◐</span><span>othello-ai<small>ADVERSARIAL SEARCH LABORATORY</small></span></a><nav aria-label="Main navigation"><button id="lab-tab" class="tab active">Play & inspect</button><button id="experiments-tab" class="tab">Experiments</button></nav><span class="course">AISC / 2026</span></header>
-<main>
-<section class="intro"><div class="eyebrow"><span class="live-dot"></span> EXPERIMENTAL GAME AI · 8 × 8</div><h1>Same search.<br><span>Different intelligence.</span></h1><p>Handcrafted, evolved, and learned position evaluators.<br>One rule engine. Controlled search budgets.</p><div class="research-note"><span>RESEARCH QUESTION</span>Can learned or evolved evaluators outperform a manual heuristic?</div></section>
-<section id="laboratory">
-<div class="workspace">
-<div class="board-panel"><div class="panel-top"><div><span class="eyebrow">01 / LIVE POSITION</span><h2>Othello</h2></div><span id="turn" class="turn-pill">Black to move</span></div>
-<div class="board-wrap"><div class="column-labels" aria-hidden="true"><span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span></div><div class="board-with-rows"><div class="row-labels" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div><div id="board" class="board" role="group" aria-label="Othello board"></div></div></div>
-<div class="board-bottom"><div class="scores"><span><i class="disc black"></i> Black <strong id="black-score">2</strong></span><span><i class="disc white"></i> White <strong id="white-score">2</strong></span></div><span id="legal-count">4 legal moves</span></div>
-<div id="status" class="status" role="status" aria-live="polite">Choose a legal square to begin.</div>
-<div class="board-actions"><button id="new-game" class="secondary">↺ New game</button><button id="pass" class="secondary" disabled>Pass turn</button><button id="export" class="text-button">Export game ↓</button></div></div>
-<aside class="controls"><div class="eyebrow">02 / ENGINE CONFIGURATION</div><h2>Set the opponent.</h2><label for="mode">Play mode</label><select id="mode"><option value="human">Human vs AI · human plays Black</option><option value="ai">AI vs AI</option></select><div id="black-control" hidden><label for="black-engine">Black engine</label><select id="black-engine"></select></div><label for="white-engine">White engine</label><select id="white-engine"></select><div class="control-row"><div><label for="depth">Search depth</label><select id="depth"><option value="1">1 placement</option><option value="2" selected>2 placements</option><option value="3">3 placements</option><option value="4">4 placements</option></select></div><div><label for="seed">Random seed</label><input id="seed" type="number" value="42" min="0"></div></div><p class="hint">Evaluator comparisons use identical depth and terminal logic. Random and greedy are baselines.</p><div class="run-controls"><button id="step" class="primary">Run one move <span>→</span></button><button id="autoplay" class="secondary">▶ Auto play</button></div>
-<div class="telemetry"><div class="eyebrow">03 / LAST SEARCH</div><div class="metric"><span>Selected move</span><strong id="selected">—</strong></div><div class="metric"><span>Root evaluation</span><strong id="evaluation">—</strong></div><div class="metric"><span>Nodes visited</span><strong id="nodes">—</strong></div><div class="metric"><span>Pruning cutoffs</span><strong id="cutoffs">—</strong></div><div class="metric"><span>Children skipped</span><strong id="skipped">—</strong></div><div class="metric"><span>Search time</span><strong id="time">—</strong></div><div class="metric"><span>Completed depth</span><strong id="completed">—</strong></div><button id="analyze" class="text-button">Analyze current position →</button><p class="hint">Root scores are from the searching player’s perspective. Skipped children exclude unseen descendants.</p></div></aside>
-</div><div class="features-panel"><div><div class="eyebrow">04 / EXPLAINABLE EVALUATION</div><h2>Inside the manual heuristic.</h2><p>Feature contributions for the current player.</p></div><div id="features" class="features"></div></div>
-</section>
-<section id="experiments" hidden><div class="section-title"><div><div class="eyebrow">SAVED EXPERIMENT OUTPUT</div><h2>Evidence, before conclusions.</h2><p id="experiment-description">Loading measured results…</p></div><a class="text-button" href="/api/results" target="_blank" rel="noopener">Inspect JSON ↗</a></div><div id="results-table"></div><div class="pair-panel"><h3>Direct evaluator comparisons</h3><div id="pair-results"></div></div><div id="charts" class="charts"></div></section>
-<footer><span>Rules and core algorithms implemented from scratch.</span><span>Feature freeze · 20 OCT &nbsp; / &nbsp; Submission · 25 OCT</span></footer>
-</main></body></html>
+<a class="skip-link" href="#main">Skip to content</a>
+<header>
+  <a class="identity" href="/" aria-label="othello-ai home"><span class="mark" aria-hidden="true">◐</span><span>othello-ai <small>AISC · ENGINE LABORATORY</small></span></a>
+  <nav role="tablist" aria-label="Laboratory views">
+    <button id="lab-tab" class="tab active" role="tab" aria-selected="true" aria-controls="laboratory">Play</button>
+    <button id="experiments-tab" class="tab" role="tab" aria-selected="false" aria-controls="experiments" tabindex="-1">Experiments</button>
+  </nav>
+  <span class="header-note">One game. Six engines.</span>
+</header>
+<main id="main">
+  <section id="laboratory" role="tabpanel" aria-labelledby="lab-tab">
+    <div class="page-intro"><div><h1>Othello, with the AI explained.</h1><p>Place a disc on a marked square. Inspect how the engine chooses its reply.</p></div></div>
+    <div class="workspace">
+      <section class="board-panel" aria-label="Game">
+        <div class="panel-top"><h2 id="turn">Loading game…</h2><span id="legal-count" class="turn-pill">8 × 8 board</span></div>
+        <div class="scoreboard"><div><i class="disc black" aria-hidden="true"></i><span>Black <small id="black-role">You</small></span><strong id="black-score">2</strong></div><div><i class="disc white" aria-hidden="true"></i><span>White <small id="white-role">AI</small></span><strong id="white-score">2</strong></div></div>
+        <div class="board-wrap"><div class="column-labels" aria-hidden="true"><span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span></div><div class="board-with-rows"><div class="row-labels" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div><div id="board" class="board" role="group" aria-label="Othello board"></div></div></div>
+        <div id="status" class="status" role="status" aria-live="polite">Loading the starting position…</div>
+        <div class="board-actions"><button id="new-game" class="secondary" disabled>New game</button><button id="pass" class="primary" hidden disabled>Pass turn</button><button id="export" class="text-button" disabled>Export game</button></div>
+        <details class="rules"><summary>How to play</summary><p>Black moves first. Place a disc so that one or more White discs sit between it and another Black disc. Those discs flip to Black. Captures work horizontally, vertically, and diagonally.</p><p>The dots mark legal moves. You must pass if you have none. The game ends when neither player can move; the player with more discs wins.</p></details>
+      </section>
+      <aside class="control-column" aria-label="Engine and search">
+        <section class="controls">
+          <h2>Choose how to play</h2>
+          <label for="mode">Players</label><select id="mode" disabled><option value="human">You vs AI · you play Black</option><option value="ai">AI vs AI · watch the engines</option></select>
+          <div id="black-control" hidden><label for="black-engine">Black engine</label><select id="black-engine" disabled></select></div>
+          <label id="white-label" for="white-engine">AI engine</label><select id="white-engine" disabled></select>
+          <p id="engine-description" class="hint">The manual evaluator scores corners, mobility, and five other measurable features.</p>
+          <label for="depth">Search depth</label><select id="depth" aria-describedby="depth-note" disabled><option value="1">1 placement ahead</option><option value="2" selected>2 placements ahead</option><option value="3">3 placements ahead</option><option value="4">4 placements ahead</option></select>
+          <p id="depth-note" class="hint">Both search engines use this depth. Passes do not count as placements.</p>
+          <div class="run-controls"><button id="step" class="primary" disabled>Play next AI move</button><button id="autoplay" class="secondary" hidden disabled>Play continuously</button></div>
+          <details class="advanced"><summary>Reproducibility settings</summary><label for="seed">Random seed</label><input id="seed" type="number" value="42" min="0" max="2147483647" step="1" disabled><p class="hint">Random moves use seed + turn number. Export records the settings used for every turn.</p></details>
+        </section>
+        <section class="telemetry" aria-labelledby="search-title">
+          <div class="search-heading"><h2 id="search-title">AI decision</h2><button id="analyze" class="text-button" disabled>Analyze board</button></div>
+          <p id="search-context" class="hint">Analyze the board to see a suggested move and its search cost.</p>
+          <div class="search-summary"><div><span>Move</span><strong id="selected">—</strong></div><div><span>Positions checked</span><strong id="nodes">—</strong></div><div><span>Value</span><strong id="evaluation">—</strong></div><div><span>Search time</span><strong id="time">—</strong></div></div>
+          <p id="value-note" class="hint">The value is an evaluation score, not a win probability.</p>
+          <details class="advanced"><summary>Search details & definitions</summary><dl class="metric-list"><div><dt>Completed depth</dt><dd id="completed">—</dd></div><div><dt>Alpha-Beta cutoffs</dt><dd id="cutoffs">—</dd></div><div><dt>Immediate children skipped</dt><dd id="skipped">—</dd></div></dl><p class="hint">A cutoff omits branches that cannot affect the decision. Skipped children exclude their unseen descendants. Exact total node savings require comparison with Minimax.</p></details>
+        </section>
+      </aside>
+    </div>
+    <details class="evaluation-panel"><summary><span>Why this position gets its manual score</span><span id="manual-score" class="mono">0.000</span></summary><div class="evaluation-content"><p id="feature-perspective">Scores are from the current player’s perspective.</p><p>Each contribution = feature value × weight ÷ total absolute weight. Positive favors the current player; negative favors the opponent.</p><div class="table-scroll"><table><caption>Manual heuristic: separate measured features and contributions</caption><thead><tr><th scope="col">Feature</th><th scope="col">Value</th><th scope="col">Weight</th><th scope="col">Contribution</th></tr></thead><tbody id="features"></tbody></table></div></div></details>
+    <div class="research-strip"><strong>The experiment</strong><p>Can evolved or learned position scoring beat the manual heuristic with the same search budget?</p><button id="compare-link" class="text-button">See measured comparisons →</button></div>
+  </section>
+  <section id="experiments" role="tabpanel" aria-labelledby="experiments-tab" hidden>
+    <div class="page-intro"><div><p class="eyebrow">MEASURED RESULTS</p><h1>Does a different evaluator play better?</h1><p>The same Alpha-Beta search. Only position scoring changes.</p></div><span class="pilot-badge">Pilot study</span></div>
+    <div class="experiment-context"><p id="experiment-description" role="status">Loading saved experiments…</p><p>Score rate = wins + half the draws, divided by games. These small samples provide initial evidence, not a general ranking.</p></div>
+    <section aria-labelledby="pair-title"><div class="section-title"><h2 id="pair-title">Direct evaluator comparisons</h2><span class="hint">Colors alternate for every opening.</span></div><div id="pair-results" class="comparison-cards"></div></section>
+    <details class="results-detail"><summary>All six engines · results and cost</summary><p class="hint">This round robin includes Random and greedy baselines. Their budgets differ from search agents. Pooled scores depend on the opponent mix.</p><div id="results-table"></div><p class="hint">Per-move cost excludes passes. Total cost includes passes. Scroll the table horizontally on smaller screens.</p></details>
+    <section class="evidence-section"><div class="section-title"><h2>What the experiments show</h2><a class="text-button" href="/api/results" target="_blank" rel="noopener">Open data (JSON) ↗</a></div><div id="charts"></div></section>
+    <details class="method-panel"><summary>How to interpret these results</summary><p>Each seeded opening is played twice with the engines’ colors swapped. The same openings are shared across pairings. Confidence intervals resample whole opening pairs, keeping the two color games together.</p><p>Equal placement depth controls the search horizon. Equal time measures practical playing strength, including evaluator cost. Both protocols keep legal moves and terminal scoring identical.</p><p>Training and validation seeds are separate from tournament seeds. Neural test positions come from separate game groups, with symmetric and near-duplicate states filtered. Prediction error and game strength measure different things.</p><p>The saved runs are pilot evidence. The feature freeze is 20 October; 21–24 October is reserved for larger experiments, documentation, presentation, and viva preparation.</p></details>
+  </section>
+  <footer><span>Rules, Minimax, Alpha-Beta, and evolution implemented from scratch.</span><span>AISC · Submission 25 October 2026</span></footer>
+</main>
+</body>
+</html>

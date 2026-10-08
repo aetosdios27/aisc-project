@@ -29,13 +29,19 @@ python -m unittest engine.tests.test_board engine.tests.test_search \
   engine.tests.test_experiments engine.tests.test_dataset
 ```
 
+Frontend regression checks use Node’s built-in test runner (no npm dependencies):
+
+```bash
+node --test web/tests/*.test.cjs
+```
+
 ## Local demo
 
 ```bash
 .venv/bin/python -m api.server --port 8000
 ```
 
-Open **http://localhost:8000**. Human plays Black; use Run one move or Auto play for the AI reply. AI-vs-AI supports all six engines. Analyze exposes the chosen move, root value, visited nodes, pruning cutoffs, skipped immediate children and search time. The manual feature panel shows separate weighted contributions. Export saves a replayable game transcript. The Experiments tab reads committed JSON and generated figures.
+Open **http://localhost:8000**. Human plays Black; the AI replies automatically. Marked squares show your legal moves. AI-vs-AI supports all six engines. Analyze exposes the chosen move, root value, visited nodes, pruning cutoffs, skipped immediate children and search time. The manual feature panel shows separate weighted contributions. Export saves a replayable game transcript. The Experiments tab reads saved JSON and generated figures, with paired uncertainty and artifact freshness checks.
 
 Committed evolved weights and neural checkpoint allow play without downloading training data. Manual/random engines also work without PyTorch. This is a local research demo, not a public production hosting service.
 

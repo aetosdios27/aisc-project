@@ -25,7 +25,7 @@ def ratio(a, b):
 
 
 def features(board: Board, player: int) -> dict[str, float]:
-    if player not in (-1, 1):
+    if type(player) is not int or player not in (-1, 1):
         raise ValueError('Invalid player')
     cells = board.cells
     adjacent = []
@@ -56,8 +56,9 @@ class Heuristic:
     def __post_init__(self):
         if len(self.weights) != len(FEATURES) or not all(isfinite(w) for w in self.weights):
             raise ValueError('Seven finite feature weights required')
-        if sum(abs(w) for w in self.weights) == 0:
-            raise ValueError('Weights cannot all be zero')
+        scale = sum(abs(w) for w in self.weights)
+        if not isfinite(scale) or scale == 0:
+            raise ValueError('Weight norm must be finite and nonzero')
 
     def explain(self, board, player):
         values = features(board, player)

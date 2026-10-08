@@ -98,6 +98,8 @@ def download(path, expected_sha256=None):
 
 
 def preprocess(raw='data/raw/WTH_2021.wtb', output='data/processed', seed=730, limit=None, expected_sha256=None):
+    if type(seed) is not int or (limit is not None and (type(limit) is not int or limit < 1)):
+        raise ValueError('Integer seed and positive integer game limit required')
     path = download(raw, expected_sha256)
     groups, rejected = {}, []
     for index, score, moves in parse_wthor(path.read_bytes()):
@@ -130,7 +132,7 @@ def preprocess(raw='data/raw/WTH_2021.wtb', output='data/processed', seed=730, l
         splits[split].extend(rows)
     directory, index = Path(output), NearIndex()
     directory.mkdir(parents=True, exist_ok=True)
-    removals, counts, hashes = {}, {}, {}
+    removals, counts, hashes, prepared = {}, {}, {}, {}
     for split, rows in splits.items():
         kept, seen, removed = [], set(), 0
         for row in rows:
@@ -143,11 +145,14 @@ def preprocess(raw='data/raw/WTH_2021.wtb', output='data/processed', seed=730, l
         # Index only prior splits; within-split near neighbors are legitimate.
         for row in kept:
             index.add(min(symmetries(row['x'])))
-        target = directory / f'{split}.jsonl'
-        target.write_text(''.join(json.dumps(row) + '\n' for row in kept))
-        removals[split], counts[split], hashes[split] = removed, len(kept), digest(target)
         if not kept:
             raise ValueError(f'Empty {split} split; use more source games')
+        payload = ''.join(json.dumps(row) + '\n' for row in kept)
+        prepared[split] = payload
+        removals[split], counts[split], hashes[split] = removed, len(kept), hashlib.sha256(payload.encode()).hexdigest()
+    # Validate every split before replacing any previously valid processed file.
+    for split, payload in prepared.items():
+        (directory / f'{split}.jsonl').write_text(payload)
     manifest = {'source': SOURCE, 'raw_sha256': digest(path), 'seed': seed, 'limit': limit,
                 'target': 'recorded game outcome from side-to-move perspective: loss=-1, draw=0, win=1',
                 'sampling': 'every fourth placement from placement 16', 'features': 64,
@@ -156,7 +161,10 @@ def preprocess(raw='data/raw/WTH_2021.wtb', output='data/processed', seed=730, l
                 'counts': counts, 'group_counts': group_counts, 'removed': removals,
                 'processed_sha256': hashes, 'rejected_games': rejected}
     (directory / 'manifest.json').write_text(json.dumps(manifest, indent=2))
-    Path('experiments/results/dataset_manifest.json').write_text(json.dumps(manifest, indent=2))
+    if directory.resolve() == Path('data/processed').resolve():
+        report = Path('experiments/results/dataset_manifest.json')
+        report.parent.mkdir(parents=True, exist_ok=True)
+        report.write_text(json.dumps(manifest, indent=2))
     print(json.dumps({'counts': counts, 'removed': removals, 'rejected': len(rejected)}), flush=True)
     return manifest
 

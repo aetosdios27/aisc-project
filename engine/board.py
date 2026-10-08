@@ -12,7 +12,7 @@ def coordinate(move: int) -> str:
 
 
 def parse_move(text: str) -> int:
-    if len(text) != 2 or text[0] not in 'abcdefgh' or text[1] not in '12345678':
+    if not isinstance(text, str) or len(text) != 2 or text[0] not in 'abcdefgh' or text[1] not in '12345678':
         raise ValueError("Use a1 through h8")
     return (int(text[1]) - 1) * 8 + ord(text[0]) - ord('a')
 
@@ -46,7 +46,7 @@ class Board:
 
     def captures(self, move: int, player: int | None = None) -> tuple[int, ...]:
         player = self.turn if player is None else player
-        if player not in (-1, 1):
+        if type(player) is not int or player not in (-1, 1):
             raise ValueError("Invalid player")
         if type(move) is not int or not 0 <= move < 64 or self.cells[move]:
             return ()
@@ -63,6 +63,8 @@ class Board:
         return tuple(flipped)
 
     def legal_moves(self, player: int | None = None) -> tuple[int, ...]:
+        if player is not None and (type(player) is not int or player not in (-1, 1)):
+            raise ValueError("Invalid player")
         return tuple(i for i, cell in enumerate(self.cells) if not cell and self.captures(i, player))
 
     def is_terminal(self) -> bool:
@@ -98,6 +100,8 @@ class Board:
 
     @classmethod
     def deserialize(cls, text: str):
+        if not isinstance(text, str):
+            raise ValueError("Invalid serialized board")
         try:
             cells, turn, passes = text.split(':')
             return cls(tuple({'B': 1, 'W': -1, '.': 0}[x] for x in cells), int(turn), int(passes))

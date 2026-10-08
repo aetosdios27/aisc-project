@@ -65,20 +65,26 @@ def summarize(games, names):
             colors[color] = {'games': len(group), 'wins': w, 'draws': d, 'losses': len(group) - w - d,
                              'score_rate': (w + 0.5 * d) / len(group) if group else 0}
             wins, draws, losses = wins + w, draws + d, losses + len(group) - w - d
-            turns.extend(t for g in group for t in g['turns'] if t['player'] == player and t['move'] is not None)
+            turns.extend(t for g in group for t in g['turns'] if t['player'] == player)
+        placements = [t for t in turns if t['move'] is not None]
         n, total_nodes = len(selected), sum(t['nodes'] for t in turns)
         result[name] = {'games': n, 'wins': wins, 'losses': losses, 'draws': draws,
                         'win_rate': wins / n if n else 0, 'score_rate': (wins + 0.5 * draws) / n if n else 0,
                         'average_game_length': sum(g['game_length'] for g in selected) / n if n else 0,
-                        'average_search_seconds': sum(t['seconds'] for t in turns) / len(turns) if turns else 0,
-                        'average_nodes': total_nodes / len(turns) if turns else 0,
-                        'total_nodes': total_nodes, 'colors': colors}
+                        'average_search_seconds': sum(t['seconds'] for t in placements) / len(placements) if placements else 0,
+                        'average_nodes': sum(t['nodes'] for t in placements) / len(placements) if placements else 0,
+                        'total_nodes': total_nodes, 'total_search_seconds': sum(t['seconds'] for t in turns),
+                        'placements': len(placements), 'passes': len(turns) - len(placements), 'colors': colors}
     return result
 
 
 def tournament(factories, games_per_pair=12, seed=2026, opening_plies=8):
-    if games_per_pair < 2 or games_per_pair % 2:
+    if type(games_per_pair) is not int or games_per_pair < 2 or games_per_pair % 2:
         raise ValueError('Use a positive even game count for paired colors')
+    if len(factories) < 2 or not all(isinstance(name, str) and name for name in factories):
+        raise ValueError('At least two named agents are required')
+    if type(seed) is not int or type(opening_plies) is not int or not 0 <= opening_plies <= 60:
+        raise ValueError('Use an integer seed and opening length from 0 to 60')
     names, games = list(factories), []
     for i, first in enumerate(names):
         for second in names[i + 1:]:
@@ -100,8 +106,11 @@ def save_results(result, path):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(result, indent=2))
-    summary = [{k: v for k, v in row.items() if k != 'colors'} | {'engine': name}
+    summary = [{k: v for k, v in row.items() if k != 'colors'} | {'engine': name} |
+               {f'{color}_{key}': value for color, values in row['colors'].items() for key, value in values.items()}
                for name, row in result['summary'].items()]
+    if not summary:
+        raise ValueError('No engine summaries to save')
     with path.with_suffix('.csv').open('w', newline='') as handle:
         writer = csv.DictWriter(handle, fieldnames=list(summary[0]))
         writer.writeheader()

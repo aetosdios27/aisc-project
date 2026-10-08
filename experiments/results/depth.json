@@ -40,7 +40,10 @@
           "average_game_length": 60.0,
           "average_search_seconds": 0.0017636717691402737,
           "average_nodes": 8.725961538461538,
-          "total_nodes": 1815,
+          "total_nodes": 1875,
+          "total_search_seconds": 0.3734958679815463,
+          "placements": 208,
+          "passes": 7,
           "colors": {
             "black": {
               "games": 4,
@@ -68,7 +71,10 @@
           "average_game_length": 60.0,
           "average_search_seconds": 0.001760975649001641,
           "average_nodes": 8.725961538461538,
-          "total_nodes": 1815,
+          "total_nodes": 1875,
+          "total_search_seconds": 0.37290364799082454,
+          "placements": 208,
+          "passes": 7,
           "colors": {
             "black": {
               "games": 4,
@@ -5474,8 +5480,8 @@
         }
       ],
       "derived_metrics": {
-        "change": "Include seeded opening placements in game_length; preserve original continuation_length",
-        "analysis_sha256": "fde2b7819445bc4ceb1682b9f3bcc836b62b230268dbcf0d1bab98ef46773313"
+        "change": "Recalculate full game length, color summaries and total cost including passes from recorded transcripts",
+        "analysis_sha256": "7294c735056a14b8bd498427a7d999d1059ddc2341895d933a2ef988c3d720e2"
       }
     },
     {
@@ -5518,7 +5524,10 @@
           "average_game_length": 60.0,
           "average_search_seconds": 0.0015952873831275019,
           "average_nodes": 7.646766169154229,
-          "total_nodes": 1537,
+          "total_nodes": 1627,
+          "total_search_seconds": 0.32877952500712126,
+          "placements": 201,
+          "passes": 13,
           "colors": {
             "black": {
               "games": 4,
@@ -5546,7 +5555,10 @@
           "average_game_length": 60.0,
           "average_search_seconds": 0.018695639623268128,
           "average_nodes": 89.52558139534884,
-          "total_nodes": 19248,
+          "total_nodes": 19252,
+          "total_search_seconds": 4.019630852002592,
+          "placements": 215,
+          "passes": 1,
           "colors": {
             "black": {
               "games": 4,
@@ -10952,8 +10964,8 @@
         }
       ],
       "derived_metrics": {
-        "change": "Include seeded opening placements in game_length; preserve original continuation_length",
-        "analysis_sha256": "fde2b7819445bc4ceb1682b9f3bcc836b62b230268dbcf0d1bab98ef46773313"
+        "change": "Recalculate full game length, color summaries and total cost including passes from recorded transcripts",
+        "analysis_sha256": "7294c735056a14b8bd498427a7d999d1059ddc2341895d933a2ef988c3d720e2"
       }
     },
     {
@@ -10996,7 +11008,10 @@
           "average_game_length": 58.5,
           "average_search_seconds": 0.0015260219796967862,
           "average_nodes": 7.224489795918367,
-          "total_nodes": 1416,
+          "total_nodes": 1563,
+          "total_search_seconds": 0.3171297120225063,
+          "placements": 196,
+          "passes": 16,
           "colors": {
             "black": {
               "games": 4,
@@ -11024,7 +11039,10 @@
           "average_game_length": 58.5,
           "average_search_seconds": 0.08073613810575772,
           "average_nodes": 416.71634615384613,
-          "total_nodes": 86677,
+          "total_nodes": 86690,
+          "total_search_seconds": 16.793308512000294,
+          "placements": 208,
+          "passes": 3,
           "colors": {
             "black": {
               "games": 4,
@@ -16346,8 +16364,8 @@
         }
       ],
       "derived_metrics": {
-        "change": "Include seeded opening placements in game_length; preserve original continuation_length",
-        "analysis_sha256": "fde2b7819445bc4ceb1682b9f3bcc836b62b230268dbcf0d1bab98ef46773313"
+        "change": "Recalculate full game length, color summaries and total cost including passes from recorded transcripts",
+        "analysis_sha256": "7294c735056a14b8bd498427a7d999d1059ddc2341895d933a2ef988c3d720e2"
       }
     }
   ],

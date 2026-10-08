@@ -1,6 +1,6 @@
 """Explicit MAX/MIN recurrences. No game/search library is used."""
 from dataclasses import dataclass
-from math import inf
+from math import inf, isfinite
 from time import perf_counter
 from engine.evaluation import Heuristic, POSITION, CORNERS, terminal_value
 
@@ -34,14 +34,26 @@ class SearchTimeout(Exception):
         self.stats = stats
 
 
-def search(board, depth=3, evaluator=None, algorithm='alphabeta', ordering='none', _deadline=None):
+def validate_options(depth, algorithm, ordering):
     if type(depth) is not int or depth < 0:
         raise ValueError('Depth must be a nonnegative integer')
     if algorithm not in ('minimax', 'alphabeta'):
         raise ValueError('Unknown search algorithm')
-    evaluator = evaluator or Heuristic()
-    ordered_moves(board, ordering)  # validate even for terminal positions
+    if ordering not in ('none', 'position', 'mobility'):
+        raise ValueError('Ordering must be none, position, or mobility')
+
+
+def leaf_value(evaluator, board, perspective):
+    value = float(evaluator(board, perspective))
+    if not isfinite(value) or not -1 <= value <= 1:
+        raise ValueError('Leaf evaluators must return a finite value in [-1, 1]')
+    return value
+
+
+def search(board, depth=3, evaluator=None, algorithm='alphabeta', ordering='none', _deadline=None):
     start, perspective = perf_counter(), board.turn
+    validate_options(depth, algorithm, ordering)
+    evaluator = Heuristic() if evaluator is None else evaluator
     stats = SearchResult(None, 0.0, completed_depth=depth)
 
     def visit(state, remaining, alpha, beta, ply):
@@ -57,7 +69,7 @@ def search(board, depth=3, evaluator=None, algorithm='alphabeta', ordering='none
             return visit(state.play(None), remaining, alpha, beta, ply)
         if remaining == 0:
             stats.leaves += 1
-            return float(evaluator(state, perspective))
+            return leaf_value(evaluator, state, perspective)
         maximizing = state.turn == perspective
         best = -inf if maximizing else inf
         for index, move in enumerate(moves):
@@ -99,14 +111,17 @@ def alphabeta(board, depth=3, evaluator=None, ordering='none'):
 
 def timed_search(board, seconds, max_depth=64, evaluator=None, ordering='position', algorithm='alphabeta'):
     """Return only a fully completed iteration; wall time is best effort on CPU."""
-    if seconds <= 0 or max_depth < 1:
+    if type(seconds) not in (int, float) or not isfinite(seconds) or seconds <= 0:
         raise ValueError('Positive time budget and maximum depth required')
-    evaluator = evaluator or Heuristic()
+    validate_options(max_depth, algorithm, ordering)
+    if max_depth < 1:
+        raise ValueError('Positive time budget and maximum depth required')
+    evaluator = Heuristic() if evaluator is None else evaluator
     start = perf_counter()
     deadline = start + seconds
     moves = board.legal_moves()
     best = SearchResult(min(moves) if moves else None,
-                        terminal_value(board, board.turn) if board.is_terminal() else float(evaluator(board, board.turn)))
+                        terminal_value(board, board.turn) if board.is_terminal() else leaf_value(evaluator, board, board.turn))
     totals = {'nodes': 0, 'leaves': 0, 'cutoffs': 0, 'skipped_children': 0}
     maximum = 0
     for depth in range(1, max_depth + 1):

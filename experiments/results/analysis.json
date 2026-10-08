@@ -1,7 +1,7 @@
 {
   "status": "pilot",
-  "tournament_sha256": "60c3aee03572218d784da12f502910648e368f161040d9d15714faa2626782c9",
-  "analysis_sha256": "688f50374ca63e1d290701200a7e91c9f2dfe0525e07871a47dc542cf56fce3d",
+  "tournament_sha256": "5eb1ddbed8925ca3e3939885e51c50a8f8b18ee57f862fc83b0468d96c06698a",
+  "analysis_sha256": "408099865c99e3d2c889c2c0155504cb839fb1f0417ce84a7064f7f1e3ac4cbb",
   "replayed_games": 324,
   "pairings": [
     {

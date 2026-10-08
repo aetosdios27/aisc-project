@@ -24,6 +24,11 @@ def factories(depth=2, time_budget=None):
 
 
 def benchmark(depths=(1, 2, 3), positions=6, seed=931):
+    depths = tuple(depths)
+    if not depths or any(type(d) is not int or d < 1 for d in depths):
+        raise ValueError('Benchmark depths must be positive integers')
+    if type(positions) is not int or not 1 <= positions <= 10:
+        raise ValueError('Use 1–10 benchmark positions with nonterminal seeded openings')
     rows, time_rows = [], []
     for index in range(positions):
         board, _ = opening(seed + index, 12 + index * 5)

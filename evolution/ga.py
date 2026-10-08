@@ -3,6 +3,7 @@ import argparse
 import csv
 import json
 import random
+from math import isfinite
 from pathlib import Path
 from statistics import mean, pstdev
 from engine.agents import SearchAgent
@@ -11,7 +12,11 @@ from experiments.tournament import opening, simulate, provenance
 
 
 def normalize(weights):
+    if len(weights) != len(FEATURES) or not all(type(w) in (int, float) and isfinite(w) for w in weights):
+        raise ValueError('Seven finite weights required')
     scale = sum(abs(w) for w in weights)
+    if not isfinite(scale):
+        raise ValueError('Weight norm must be finite')
     return tuple(w / scale for w in weights) if scale else MANUAL_WEIGHTS
 
 
@@ -30,6 +35,9 @@ def mutate(weights, rng, rate=0.3, sigma=0.1):
 
 
 def fitness(weights, opponents, seeds, depth):
+    opponents, seeds = tuple(opponents), tuple(seeds)
+    if not opponents or not seeds or not all(type(seed) is int for seed in seeds):
+        raise ValueError('A nonempty opponent panel and integer opening seeds are required')
     points, records = 0.0, []
     candidate = Heuristic(tuple(weights))
     for opponent in opponents:
@@ -45,7 +53,7 @@ def fitness(weights, opponents, seeds, depth):
 
 
 def evolve(population_size=6, generations=4, pairs=2, depth=1, seed=440, output='experiments/results/ga.json'):
-    if population_size < 3 or generations < 1 or pairs < 1 or depth < 1:
+    if not all(type(x) is int for x in (population_size, generations, pairs, depth, seed)) or population_size < 3 or generations < 1 or pairs < 1 or depth < 1:
         raise ValueError('Population >= 3, generations/pairs/depth >= 1 required')
     rng = random.Random(seed)
     population = [normalize(MANUAL_WEIGHTS)] + [mutate(MANUAL_WEIGHTS, rng, 1, 0.2) for _ in range(population_size - 1)]
@@ -59,7 +67,8 @@ def evolve(population_size=6, generations=4, pairs=2, depth=1, seed=440, output=
         index = max(range(population_size), key=lambda i: (scores[i], -i))
         champion = population[index]
         # Comparable fixed validation panel; separate seeds from fitness and final tests.
-        validation_score, heldout = fitness(champion, [normalize(MANUAL_WEIGHTS)], range(seed + 1000, seed + 1000 + pairs), depth)
+        validation_start = seed + max(1000, pairs)
+        validation_score, heldout = fitness(champion, [normalize(MANUAL_WEIGHTS)], range(validation_start, validation_start + pairs), depth)
         if validation_score > validation:
             best, validation = champion, validation_score
         history.append({'generation': generation, 'best_fitness': scores[index], 'average_fitness': mean(scores),

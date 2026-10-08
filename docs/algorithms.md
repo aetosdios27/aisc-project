@@ -162,7 +162,7 @@ restore minimum-validation-loss checkpoint
 evaluate test set once; save metrics and source/checkpoint hashes
 ```
 
-One forward pass is O(64×128+128×64+64); backprop is the same order with larger constants. Training O(epochs × samples × parameters), memory O(parameters + batch activations + loaded samples). Track MSE, MAE, Pearson correlation and secondary outcome accuracy using thresholds −1/3,+1/3. This is regression; classification accuracy is not the training objective. The mean training outcome is the offline constant baseline.
+One forward pass is O(64×128+128×64+64); backprop is the same order with larger constants. Training O(epochs × samples × parameters), memory O(parameters + batch activations + loaded samples). Track MSE, MAE, Pearson correlation and secondary outcome accuracy using thresholds −0.33,+0.33. This is regression; classification accuracy is not the training objective. The mean training outcome is the offline constant baseline.
 
 Overfitting means training error improves while held-out generalization degrades. The pilot shows it clearly, so checkpoint selection uses validation loss rather than the last epoch. Future regularization/data changes must be chosen on validation; reserve a new final test set if repeatedly tuning after examining pilot test metrics. Human-game outcomes include policy noise and are not perfect-play values.
 

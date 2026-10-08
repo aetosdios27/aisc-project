@@ -1,0 +1,20 @@
+{
+  "sources": {
+    "tournament": "5eb1ddbed8925ca3e3939885e51c50a8f8b18ee57f862fc83b0468d96c06698a",
+    "benchmark": "0eb2442b2f6fbf8d368b9325a88d89465da97954652de90c890806be302666d1",
+    "ga": "f5dfff616c059c7487ec38371d4788ead53041d3a058f500d8107a75649741b0",
+    "neural": "4d98f17ad7ec23d66f56a67ac58b4af41609153c2be19177deefc64ff25e1cb5",
+    "depth": "cf8c97dfc193d1a1f90466ece3e3ce980c0d52989eb8ceae9027895f414d84be"
+  },
+  "figures": {
+    "depth_strength.png": "101206fb2d15e49b10f6d85919289a40192829815ddfb84a5192c381cfd4d4ce",
+    "ga.png": "e249cd530102add84c71aa53ba582566f389255400a66f4fc61021b9db3170cc",
+    "ga_neural.png": "ce98b116a1303b601eb1a9fff10fac78d74fd6e44a0cedab5c0ba2b8a5ca2575",
+    "manual_ga.png": "6fe015290dc0fb558668aa8b76f235ae1f9519e6693a6312a04ae40821ec5222",
+    "manual_neural.png": "26f212bb2612ef0dd13ae3dd8bf611d995a9b95f6c39a6f9b6b8ad5a78379850",
+    "neural.png": "bbb8d6464984418a54decde10eb49402dff33b426b98e4c973ae1ed8d8050874",
+    "nodes.png": "3e36f7959848818d71473f525007f803d02fc81a1d349b6066fe798d66aeb4d1",
+    "round_robin.png": "dabdd104ded1c39adb2077b39c48254d1828a0736c644988038d97fab6a937dc",
+    "runtime.png": "6497fbf9abf40c3162c78450021d8cf7f986051aaf367cafc0e53ae89fb2a45c"
+  }
+}

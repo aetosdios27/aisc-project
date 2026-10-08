@@ -3,6 +3,7 @@ from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from experiments.tournament import digest
 
 ROOT = Path('experiments/results')
 OUTPUT = Path('experiments/plots')
@@ -35,7 +36,9 @@ def generate():
         plt.figure(figsize=(6, 4))
         plt.bar((first, second), rates, color=('#278878', '#c58738'))
         plt.ylim(0, 1)
-        save(name, f'Pilot: {len(group)} paired games at equal depth', 'Evaluator + Alpha-Beta', 'Score rate')
+        config = tournament['config']
+        budget = f"equal depth {config['depth']}" if config.get('time_budget') is None else f"equal {config['time_budget']} s / move"
+        save(name, f'Pilot: {len(group)} paired games, {budget}', 'Evaluator + Alpha-Beta', 'Score rate')
     rows = json.loads((ROOT / 'benchmark.json').read_text())['rows']
     depths = sorted({r['depth'] for r in rows})
     for name, field, ylabel in (('nodes', 'nodes', 'Mean visited nodes'), ('runtime', 'seconds', 'Mean seconds / search')):
@@ -64,6 +67,9 @@ def generate():
              [s['summary'][f"manual-d{s['config']['candidate_depth']}"]['score_rate'] for s in studies], 'o-')
     plt.ylim(0, 1)
     save('depth_strength', 'Pilot: manual evaluator vs fixed depth-one reference', 'Candidate depth', 'Score rate')
+    manifest = {'sources': {name: digest(ROOT / f'{name}.json') for name in ('tournament', 'benchmark', 'ga', 'neural', 'depth')},
+                'figures': {p.name: digest(p) for p in sorted(OUTPUT.glob('*.png'))}}
+    (OUTPUT / 'manifest.json').write_text(json.dumps(manifest, indent=2))
     print('Generated nine charts from saved experiment outputs')
 
 

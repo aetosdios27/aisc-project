@@ -1,7 +1,8 @@
 import random
 from time import perf_counter
-from engine.evaluation import Heuristic, terminal_value
-from engine.search import SearchResult, search, timed_search
+from math import isfinite
+from engine.evaluation import Heuristic
+from engine.search import SearchResult, search, timed_search, validate_options
 
 
 class RandomAgent:
@@ -18,10 +19,13 @@ class RandomAgent:
 
 class SearchAgent:
     def __init__(self, name='manual-ab', depth=3, evaluator=None, algorithm='alphabeta', ordering='position', time_budget=None):
+        validate_options(depth, algorithm, ordering)
         if depth < 1:
             raise ValueError('Playing agents need depth >= 1')
+        if time_budget is not None and (type(time_budget) not in (int, float) or not isfinite(time_budget) or time_budget <= 0):
+            raise ValueError('Time budget must be finite and positive')
         self.name, self.depth = name, depth
-        self.evaluator = evaluator or Heuristic()
+        self.evaluator = Heuristic() if evaluator is None else evaluator
         self.algorithm, self.ordering = algorithm, ordering
         self.time_budget = time_budget
 
@@ -35,7 +39,7 @@ class GreedyAgent:
     name = 'manual-greedy'
 
     def __init__(self, evaluator=None):
-        self.evaluator = evaluator or Heuristic()
+        self.evaluator = Heuristic() if evaluator is None else evaluator
 
     def choose(self, board):
         # A one-placement greedy evaluator is depth-one Minimax.

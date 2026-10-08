@@ -2,6 +2,7 @@ import argparse
 import csv
 import json
 import random
+from math import isfinite
 from pathlib import Path
 import torch
 from torch import nn
@@ -11,6 +12,10 @@ from experiments.tournament import digest, provenance
 
 def load_split(path):
     rows = [json.loads(line) for line in Path(path).read_text().splitlines()]
+    if not rows or any(not isinstance(r, dict) or not isinstance(r.get('x'), list) or len(r['x']) != 64
+                       or any(type(x) not in (int, float) or x not in (-1, 0, 1) for x in r['x'])
+                       or type(r.get('y')) not in (int, float) or r['y'] not in (-1, 0, 1) for r in rows):
+        raise ValueError(f'Expected nonempty 64-cell outcome samples in {path}')
     return torch.tensor([r['x'] for r in rows], dtype=torch.float32), torch.tensor([r['y'] for r in rows], dtype=torch.float32)
 
 
@@ -23,15 +28,20 @@ def metrics(model, x, y):
 
 
 def train(epochs=20, batch_size=128, learning_rate=0.001, seed=810):
-    if epochs < 1 or batch_size < 1 or learning_rate <= 0:
+    if type(epochs) is not int or type(batch_size) is not int or epochs < 1 or batch_size < 1 or type(learning_rate) not in (int, float) or not isfinite(learning_rate) or learning_rate <= 0:
         raise ValueError('Positive epochs, batch size and learning rate required')
+    if type(seed) is not int or not 0 <= seed < 2**63:
+        raise ValueError('Seed must be an integer in [0, 2**63)')
     random.seed(seed)
     torch.manual_seed(seed)
     torch.set_num_threads(1)
     torch.use_deterministic_algorithms(True)
     directory = Path('data/processed')
     manifest = json.loads((directory / 'manifest.json').read_text())
-    for split, expected in manifest['processed_sha256'].items():
+    for split in ('train', 'validation', 'test'):
+        expected = manifest['processed_sha256'].get(split)
+        if expected is None:
+            raise ValueError(f'Missing {split} fingerprint in dataset manifest')
         if digest(directory / f'{split}.jsonl') != expected:
             raise ValueError(f'Changed {split} data; preprocess again')
     x, y = load_split(directory / 'train.jsonl')
@@ -56,7 +66,7 @@ def train(epochs=20, batch_size=128, learning_rate=0.001, seed=810):
         if validation['mse'] < best_loss:
             best_loss, best_epoch = validation['mse'], epoch + 1
             torch.save({'state_dict': model.state_dict(), 'seed': seed, 'epoch': best_epoch,
-                        'dataset_sha256': manifest['raw_sha256']}, 'neural/checkpoint.pt')
+                        'dataset_sha256': manifest['raw_sha256'], 'processed_sha256': manifest['processed_sha256']}, 'neural/checkpoint.pt')
         print(f"Epoch {epoch + 1}: train={row['training_loss']:.4f}, validation={row['validation_loss']:.4f}", flush=True)
     saved = torch.load('neural/checkpoint.pt', weights_only=True)
     model.load_state_dict(saved['state_dict'])
